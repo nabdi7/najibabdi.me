@@ -8,16 +8,15 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-interface PageProps {
+type Props = {
   params: {
     slug: string;
   };
-  searchParams: Record<string, string | string[] | undefined>;
 }
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: Props): Promise<Metadata> {
   const blog = await getBlogBySlug(params.slug);
 
   if (!blog) {
@@ -41,12 +40,12 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
-  const slugs = blogs.map((blog) => ({ slug: blog.slug }));
-
-  return slugs;
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
 }
 
-export default async function Blog({ params }: PageProps) {
+export default async function Blog({ params }: Props) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
