@@ -1,22 +1,23 @@
 import React from "react";
 import { Metadata } from "next";
-import About from "@/components/about/about";
+// import Research from "@/components/research/research";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Najib Abdi - Software Engineer",
+  title: "Najib Abdi - Research & Publications",
   description:
-    "Software engineer with a passion for machine learning, algorithms, and software development. Exploring cutting-edge technology and computational methods.",
+    "Academic research and publications on machine learning, algorithms, software development, and computer science. Exploring cutting-edge technology and computational methods.",
   keywords: [
-    "software engineer",
-    "machine learning",
-    "algorithm",
-    "software development",
-    "AI",
+    "machine learning research",
+    "algorithm research",
+    "computer science research",
+    "software development research",
+    "academic publications",
+    "AI research",
     "computational methods",
-    "Najib Abdi",
+    "Najib Abdi research",
     "technical papers",
-    "computer science",
+    "computer science publications",
   ],
   authors: [{ name: siteConfig.author, url: siteConfig.url }],
   creator: siteConfig.author,
@@ -34,24 +35,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: `${siteConfig.url}/research`,
-    title: "Najib Abdi - Software Engineer",
+    title: "Najib Abdi - Research & Publications",
     description:
-      "Software engineer with a passion for machine learning, algorithms, and software development. Exploring cutting-edge technology and computational methods.",
+      "Academic research and publications on machine learning, algorithms, software development, and computer science. Exploring cutting-edge technology and computational methods.",
     siteName: siteConfig.name,
     images: [
       {
         url: `${siteConfig.url}/opengraph-image.png`,
         width: 1200,
         height: 630,
-        alt: "Najib Abdi's Software Engineering Portfolio",
+        alt: "Najib Abdi's Research Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Najib Abdi - Software Engineer",
+    title: "Najib Abdi - Research & Publications",
     description:
-      "Software engineer with a passion for machine learning, algorithms, and software development.",
+      "Academic research and publications in machine learning, algorithms, and computer science.",
     creator: "@najibabdi7",
     images: [`${siteConfig.url}/opengraph-image.png`],
   },
@@ -80,12 +81,14 @@ export const metadata: Metadata = {
   // },
 };
 
-export default function Home() {
+export default async function Research() {
   return (
     <section className="pb-24 pt-40">
       <div className="container max-w-3xl">
-        <About />
+        <h1 className="title no-underline text-foreground">Research</h1>
+        <p className="mt-3 font-light text-muted-foreground">In progress...</p>
       </div>
+      {/* <Research /> */}
     </section>
   );
 }
