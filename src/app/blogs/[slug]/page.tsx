@@ -7,19 +7,20 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   const slugs = blogs.map((blog) => ({ slug: blog.slug }));
   return slugs;
 }
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function Blog({ params }: PageProps) {
+export default async function Blog({ params }: Props) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
@@ -81,7 +82,6 @@ export default async function Blog({ params }: PageProps) {
   );
 }
 
-
 // import Link from "next/link";
 // import Image from "next/image";
 // import { Metadata } from 'next';
@@ -94,7 +94,7 @@ export default async function Blog({ params }: PageProps) {
 
 // export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 //   const blog = await getBlogBySlug(params.slug);
-  
+
 //   if (!blog) {
 //     return {
 //       title: 'Blog Not Found'
