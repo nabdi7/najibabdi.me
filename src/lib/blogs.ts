@@ -10,7 +10,7 @@ export type Blog = {
 }
 
 export type BlogMetadata = {
-  title?: string 
+  title?: string
   summary?: string
   image?: string
   author?: string
@@ -25,7 +25,8 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
     const { data, content } = matter(fileContent)
     return { metadata: { ...data, slug }, content }
-  } catch (error) {
+  } catch (e: unknown) {
+    console.error(`Error fetching blog post with slug "${slug}":`, e);
     return null
   }
 }
@@ -55,9 +56,9 @@ export function getBlogMetadata(filepath: string): BlogMetadata {
   const filePath = path.join(rootDirectory, filepath)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
   const { data, content } = matter(fileContent)
-  return { 
-    ...data, 
+  return {
+    ...data,
     slug,
-    content 
+    content
   }
 }

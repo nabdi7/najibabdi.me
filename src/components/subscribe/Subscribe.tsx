@@ -66,7 +66,7 @@ const Subscribe = () => {
               {showSuccessMessage && (
                 <div className="mt-4">
                   <Alert
-                    variant="success"
+                    variant="default"
                     className="bg-emerald-50 dark:bg-emerald-950 border-emerald-200 dark:border-emerald-900"
                   >
                     <AlertDescription className="text-emerald-800 dark:text-emerald-200">

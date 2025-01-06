@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 
 export const runtime = "edge";
 
-const interBold = fetch(
+const interBold: Promise<ArrayBuffer> = fetch(
   new URL("../../../../public/fonts/Inter-Bold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
@@ -24,16 +24,27 @@ export async function GET(req: NextRequest) {
 
     return new ImageResponse(
       (
-        <div tw="flex relative flex-col p-12 w-full h-full items-start text-black bg-white">
-          <div tw="flex items-center">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "48px",
+            width: "100%",
+            height: "100%",
+            alignItems: "flex-start",
+            color: "black",
+            backgroundColor: "white",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center" }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0" />
               <path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7" />
@@ -45,18 +56,60 @@ export async function GET(req: NextRequest) {
               <path d="M3.71 6.4a9.95 9.95 0 0 1 2.7-2.69" />
               <circle cx="12" cy="12" r="1" />
             </svg>
-            <p tw="ml-2 font-bold text-2xl">Najib Abdi</p>
+            <p style={{ marginLeft: "8px", fontWeight: 700, fontSize: "24px" }}>
+              Najib Abdi
+            </p>
           </div>
-          <div tw="flex flex-col flex-1 py-10">
-            <div tw="flex text-xl uppercase font-bold tracking-tight font-normal">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+              padding: "40px 0",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                fontSize: "20px",
+                textTransform: "uppercase",
+                fontWeight: 700,
+                letterSpacing: "tight",
+              }}
+            >
               Blog post
             </div>
-            <div tw="flex text-[80px] font-bold text-[50px]">{heading}</div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: "50px",
+                fontWeight: 700,
+              }}
+            >
+              {heading}
+            </div>
           </div>
-          <div tw="flex items-center w-full justify-between">
-            <div tw="flex text-xl">{siteConfig.url}</div>
-            <div tw="flex items-center text-xl">
-              <div tw="flex ml-2">{siteConfig.links.github}</div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex", fontSize: "20px" }}>
+              {siteConfig.url}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: "20px",
+              }}
+            >
+              <div style={{ display: "flex", marginLeft: "8px" }}>
+                {siteConfig.links.github}
+              </div>
             </div>
           </div>
         </div>
@@ -74,7 +127,8 @@ export async function GET(req: NextRequest) {
         ],
       }
     );
-  } catch (error) {
+  } catch (e: unknown) {
+    console.error("Error generating OG image:", e);
     return new Response("Failed to generate image", { status: 500 });
   }
 }
