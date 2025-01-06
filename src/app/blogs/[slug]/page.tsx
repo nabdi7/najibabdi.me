@@ -7,12 +7,9 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+interface BlogPageProps {
+  params: { slug: string }
+}
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
@@ -20,7 +17,7 @@ export async function generateStaticParams() {
   return slugs;
 }
 
-export default async function Blog({ params }: Props) {
+export default async function Blog({ params }: BlogPageProps) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
