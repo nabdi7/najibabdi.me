@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
 import { getBlogs, getBlogBySlug } from "@/lib/blogs";
@@ -11,11 +10,16 @@ import Subscribe from "@/components/subscribe/Subscribe";
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   const slugs = blogs.map((blog) => ({ slug: blog.slug }));
-
   return slugs;
 }
 
-export default async function Blog({ params }: { params: { slug: string } }) {
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function Blog({ params }: PageProps) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
