@@ -1,39 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from "next/types";
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
 import { getBlogs, getBlogBySlug } from "@/lib/blogs";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
+import type { Metadata } from "next/types";
 
-interface PageParams {
-  params: {
-    slug: string;
-  };
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata(props: PageParams): Promise<Metadata> {
-  const { params } = await Promise.resolve(props);
-  const blog = await getBlogBySlug(await params.slug);
-  
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  const blog = await getBlogBySlug(params.slug);
+
   if (!blog) {
     return {
-      title: 'Blog Not Found'
+      title: 'Not Found',
+      description: 'The page you are looking for does not exist.'
     };
   }
 
   return {
     title: blog.metadata.title,
     description: blog.metadata.summary || '',
-    openGraph: {
-      title: blog.metadata.title,
-      description: blog.metadata.summary || '',
-      type: 'article',
-      authors: [blog.metadata.author || ''],
-      publishedTime: blog.metadata.publishedAt,
-    },
   };
 }
 
@@ -44,9 +38,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page(props: PageParams) {
-  const { params } = await Promise.resolve(props);
-  const blog = await getBlogBySlug(await params.slug);
+export default async function Blog({ params }: Props) {
+  const { slug } = params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();
