@@ -1,32 +1,29 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
-import { getBlogs, getBlogBySlug } from "@/lib/blogs";
+import { getPosts, getPostBySlug } from "@/lib/posts";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
 export async function generateStaticParams() {
-  const blogs = await getBlogs();
-  return blogs.map((blog) => ({
-    slug: blog.slug,
-  }));
+  const posts = await getPosts();
+  const slugs = posts.map((post) => ({ slug: post.slug }));
+
+  return slugs;
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const blog = await getBlogBySlug(slug);
+  const post = await getPostBySlug(slug);
 
-  if (!blog) {
+  if (!post) {
     notFound();
   }
 
-  const { metadata, content } = blog;
+  const { metadata, content } = post;
   const { title, image, author, publishedAt } = metadata;
 
   return (
@@ -79,6 +76,7 @@ export default async function Blog({
     </section>
   );
 }
+
 
 // import Link from "next/link";
 // import Image from "next/image";

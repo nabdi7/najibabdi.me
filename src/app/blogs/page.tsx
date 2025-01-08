@@ -1,8 +1,8 @@
 import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next/types";
 import { siteConfig } from "@/config/site";
-import { getBlogs } from "@/lib/blogs";
-import BlogsWithSearch from "@/components/blogs/blogs-with-search";
+import { getPosts } from "@/lib/posts";
+import PostsWithSearch from "@/components/blogs/posts-with-search";
 import Subscribe from "@/components/subscribe/Subscribe";
 
 export const metadata: Metadata = {
@@ -70,15 +70,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogsPage() {
-  const blogs = await getBlogs();
+export default async function PostsPage() {
+  const posts = await getPosts();
 
   return (
     <section className="pb-24 pt-40">
       <div className="container max-w-3xl">
         <h1 className="title no-underline mb-12">Blogs</h1>
 
-        <BlogsWithSearch blogs={blogs} />
+        <PostsWithSearch posts={posts} />
         <div className="mt-16">
           <Subscribe />
         </div>
