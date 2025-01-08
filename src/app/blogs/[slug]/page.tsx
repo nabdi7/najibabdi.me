@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import type { Metadata } from "next/types";
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
 import { getBlogs, getBlogBySlug } from "@/lib/blogs";
@@ -8,16 +8,45 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-export async function generateStaticParams() {
-  const blogs = await getBlogs();
-  const slugs = blogs.map((blog) => ({ slug: blog.slug }));
-
-  return slugs;
+interface PageParams {
+  params: {
+    slug: string;
+  };
 }
 
-export default async function Blog({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const blog = await getBlogBySlug(slug);
+export async function generateMetadata(props: PageParams): Promise<Metadata> {
+  const { params } = await Promise.resolve(props);
+  const blog = await getBlogBySlug(await params.slug);
+  
+  if (!blog) {
+    return {
+      title: 'Blog Not Found'
+    };
+  }
+
+  return {
+    title: blog.metadata.title,
+    description: blog.metadata.summary || '',
+    openGraph: {
+      title: blog.metadata.title,
+      description: blog.metadata.summary || '',
+      type: 'article',
+      authors: [blog.metadata.author || ''],
+      publishedTime: blog.metadata.publishedAt,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const blogs = await getBlogs();
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
+
+export default async function Page(props: PageParams) {
+  const { params } = await Promise.resolve(props);
+  const blog = await getBlogBySlug(await params.slug);
 
   if (!blog) {
     notFound();
