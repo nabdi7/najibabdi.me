@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
 import { getBlogs, getBlogBySlug } from "@/lib/blogs";
@@ -7,17 +8,14 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-interface BlogPageProps {
-  params: { slug: string }
-}
-
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   const slugs = blogs.map((blog) => ({ slug: blog.slug }));
+
   return slugs;
 }
 
-export default async function Blog({ params }: BlogPageProps) {
+export default async function Blog({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
@@ -79,6 +77,7 @@ export default async function Blog({ params }: BlogPageProps) {
   );
 }
 
+
 // import Link from "next/link";
 // import Image from "next/image";
 // import { Metadata } from 'next';
@@ -91,7 +90,7 @@ export default async function Blog({ params }: BlogPageProps) {
 
 // export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 //   const blog = await getBlogBySlug(params.slug);
-
+  
 //   if (!blog) {
 //     return {
 //       title: 'Blog Not Found'
