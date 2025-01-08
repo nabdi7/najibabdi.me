@@ -6,30 +6,6 @@ import { getBlogs, getBlogBySlug } from "@/lib/blogs";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
-import type { Metadata } from "next/types";
-
-type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
-  const blog = await getBlogBySlug(params.slug);
-
-  if (!blog) {
-    return {
-      title: 'Not Found',
-      description: 'The page you are looking for does not exist.'
-    };
-  }
-
-  return {
-    title: blog.metadata.title,
-    description: blog.metadata.summary || '',
-  };
-}
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
@@ -38,7 +14,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Blog({ params }: Props) {
+export default async function Blog({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
 
@@ -99,7 +79,6 @@ export default async function Blog({ params }: Props) {
     </section>
   );
 }
-
 
 // import Link from "next/link";
 // import Image from "next/image";
