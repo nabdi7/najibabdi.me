@@ -1,35 +1,12 @@
 import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from 'next/types'
 import { formatDate } from "@/lib/utils";
 import MDXContent from "@/components/blogs/mdx-content";
 import { getPosts, getPostBySlug } from "@/lib/posts";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found'
-    };
-  }
-
-  return {
-    title: post.metadata.title,
-    description: post.metadata.summary || '',
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.summary || '',
-      type: 'article',
-      authors: [post.metadata.author || ''],
-      publishedTime: post.metadata.publishedAt,
-    },
-  };
-}
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -99,8 +76,6 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
     </section>
   );
 }
-
-
 
 // import Link from "next/link";
 // import Image from "next/image";
