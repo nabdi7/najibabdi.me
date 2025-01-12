@@ -8,14 +8,6 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-// Define the params type
-type PageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -23,8 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: PageProps) {
-  const post = use(getPostBySlug(params.slug));
+export default function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = use(params);
+  const post = use(getPostBySlug(resolvedParams.slug));
 
   if (!post) {
     notFound();
