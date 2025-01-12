@@ -1,5 +1,5 @@
 import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from 'next/types'
 import ProjectsList from "@/components/projects/Projects";
 import { siteConfig } from "@/config/site";
 

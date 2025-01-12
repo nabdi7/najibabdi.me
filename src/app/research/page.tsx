@@ -1,5 +1,5 @@
 import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from 'next/types'
 // import Research from "@/components/research/research";
 import { siteConfig } from "@/config/site";
 
