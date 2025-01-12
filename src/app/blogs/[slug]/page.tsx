@@ -3,27 +3,12 @@ import { getPosts, getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import PostPage from "./PostPage";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | undefined }
 }
 
-// Define the Post type to match your data structure
-interface Post {
-  metadata: {
-    title?: string;
-    image?: string;
-    author?: string;
-    publishedAt?: string;
-    summary?: string;
-  };
-  content: string;
-  slug: string;
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   
   if (!post) {
@@ -52,7 +37,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Post({ params }: PageProps) {
+export default async function Page({ params }: Props) {
   const { slug } = params;
   const post = await getPostBySlug(slug);
 
@@ -62,7 +47,6 @@ export default async function Post({ params }: PageProps) {
 
   return <PostPage post={post} />;
 }
-
 
 // import Link from "next/link";
 // import Image from "next/image";
