@@ -58,7 +58,7 @@ export default function About() {
               In my free time, I enjoy writing and exploring the fascinating
               topics of physics, astronomy, and other scientific phenomena.
               Check out my{" "}
-              <Link href="/posts" className="text-blue-500">
+              <Link href="/blogs" className="text-blue-500">
                 blogs
               </Link>{" "}
               to see what I&apos;ve been writing about.
