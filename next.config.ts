@@ -1,13 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next/dist/server/config'
 
-const nextConfig: NextConfig = {
+const config: NextConfig = {
   reactStrictMode: true,
   output: 'export',
-  images: {unoptimized: true},
-
+  images: {
+    unoptimized: true
+  },
   // images: {
   //   domains: ['res.cloudinary.com'],
   // },
-};
+}
 
-export default nextConfig;
+export default config
