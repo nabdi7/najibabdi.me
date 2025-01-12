@@ -1,24 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Najib Abdi
 
-## Getting Started
+My personal portfolio, built with [Next.js](https://nextjs.org), [TailwindCSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org), [MDX](https://mdxjs.com) for blog content, [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography), [ShadCN](https://github.com/ShadCN), and [Radix Icons](https://www.radix-ui.com/icons).
 
-First, run the development server:
+## How to Get Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To run the project locally, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repository to your local machine.
+2. Install the dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the development server:
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev```
+4. Open your browser and go to http://localhost:3000 to view the project.
+
+This portfolio showcases my work and expertise in web development. It highlights my skills with modern technologies, including:
+
+- Next.js for server-side rendering and seamless user experience.
+- TailwindCSS for utility-first CSS styling, ensuring a responsive and customizable design.
+- TypeScript to add type safety to my code and improve development speed.
+- MDX for a flexible blogging experience that combines markdown with React components.
+- Tailwind Typography for beautiful and optimized typography that enhances readability.
+- ShadCN and Radix Icons for clean, accessible, and scalable iconography.
 
 ## Learn More
 
