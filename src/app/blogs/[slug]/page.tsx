@@ -1,3 +1,4 @@
+import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/lib/utils";
@@ -7,10 +8,6 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { notFound } from "next/navigation";
 import Subscribe from "@/components/subscribe/Subscribe";
 
-type PageProps = {
-  params: { slug: string };
-};
-
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -18,9 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+export default function Page({ params }: { params: { slug: string } }) {
+  // Remove the Promise type from params and use the hook directly
+  const post = use(getPostBySlug(params.slug));
 
   if (!post) {
     notFound();
