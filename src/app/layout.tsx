@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next/types'
 import { Inter, Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local' 
 import Script from "next/script";
 import { cn } from '@/lib/utils'
 
@@ -15,6 +16,11 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const playfair = Playfair_Display({
   subsets: ['latin'], 
   variable: '--font-serif'
+})
+// Uthmanic font
+const uthmanic = localFont({
+  src: '../../public/fonts/Uthmanic-Script.woff2', 
+  variable: '--font-uthmanic'
 })
 
 export const metadata: Metadata = {
@@ -115,7 +121,8 @@ export default function RootLayout({
         className={cn(
           'flex min-h-screen flex-col font-sans antialiased',
           inter.variable,
-          playfair.variable
+          playfair.variable,
+          uthmanic.variable 
         )}
       >
         <noscript>
