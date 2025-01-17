@@ -1,6 +1,6 @@
 <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
   <!-- Background gradient for space -->
-  <rect x="0" y="0" width="800" height="400" fill="none"/>
+  <rect x="0" y="0" width="800" height="400" fill="#1a1a2e"/>
   
   <!-- Massive body (e.g., black hole) -->
   <circle cx="400" cy="200" r="60" fill="#000"/>
@@ -13,21 +13,21 @@
   <circle cx="400" cy="200" r="180" stroke="#666" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
   
   <!-- Labels -->
-  <text x="400" y="50" text-anchor="middle" fill="#000" font-size="20">Gravitational Time Dilation</text>
+  <text x="400" y="50" text-anchor="middle" fill="#fff" font-size="20">Gravitational Time Dilation</text>
   
   <!-- Time rates at different distances -->
   <text x="400" y="150" text-anchor="middle" fill="#FFA500">Event Horizon (Time Stops)</text>
-  <text x="400" y="320" text-anchor="middle" fill="#000">Strong Time Dilation</text>
-  <text x="400" y="370" text-anchor="middle" fill="#000">Weaker Time Dilation</text>
+  <text x="400" y="320" text-anchor="middle" fill="#fff">Strong Time Dilation</text>
+  <text x="400" y="370" text-anchor="middle" fill="#fff">Weaker Time Dilation</text>
   
   <!-- Arrows indicating increasing time dilation -->
-  <path d="M 600 200 L 500 200" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <text x="650" y="205" fill="#000">Time Slows</text>
+  <path d="M 600 200 L 500 200" stroke="#fff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="650" y="205" fill="#fff">Time Slows</text>
   
   <!-- Arrow marker definition -->
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fff"/>
     </marker>
   </defs>
 </svg>
