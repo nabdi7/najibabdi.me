@@ -16,6 +16,18 @@ export const projects: Project[] = [
     sourceUrl: "https://www.qdwebdesigns.com",
   },
   {
+    title: "Sakina App",
+    description: "An app facilitating emotional well-being management.",
+    category: "App development",
+    tag: [
+      { name: "React Native", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/reactjs_tsluku.svg" },
+      { name: "MongoDB", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/mongodb_z5kave.svg" },
+      { name: "Firebase", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/firebase_q2piz5.svg" },
+    ],
+    url: "https://www.sakinaapp.com/",
+    sourceUrl: "https://github.com/nabdi7/sakinaweb",
+  },
+  {
     title: "Hiba Family Daycare",
     description: "A website for Hiba Family Childcare, Licensed family childcare in Seattle WA.",
     category: "Web development",
@@ -65,18 +77,6 @@ export const projects: Project[] = [
     ],
     url: "/",
     sourceUrl: "/",
-  },
-  {
-    title: "Sakina App",
-    description: "An app facilitating emotional well-being management.",
-    category: "App development",
-    tag: [
-      { name: "React Native", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/reactjs_tsluku.svg" },
-      { name: "MongoDB", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/mongodb_z5kave.svg" },
-      { name: "Firebase", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/firebase_q2piz5.svg" },
-    ],
-    url: "https://emotions-web.vercel.app/",
-    sourceUrl: "https://github.com/nabdi7/emotions-web",
   },
   {
     title: "Current Personal Website",
