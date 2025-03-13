@@ -4,7 +4,7 @@ import { Project } from "../types/projects";
 export const projects: Project[] = [ 
   { 
     title: "QD Web Designs",
-    description: "A website for QD Web Designs, a web development agency based in Seattle, WA.",
+    description: "A website for QD Web Designs, a digital web and app development agency based in Seattle, WA.",
     category: "Web development",
     tag: [
       { name: "Next.js", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/nextjs_kcwvei.svg" },
@@ -17,7 +17,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sakina App",
-    description: "An app facilitating emotional well-being management.",
+    description: "An emotional wellness app emphasizing connections to Quran and Hadiths using React Native.",
     category: "App development",
     tag: [
       { name: "React Native", icon: "https://res.cloudinary.com/dlehxkdtn/image/upload/reactjs_tsluku.svg" },

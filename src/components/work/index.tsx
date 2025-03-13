@@ -17,9 +17,9 @@ export const workData = [
     imageUrl:
       "https://res.cloudinary.com/dlehxkdtn/image/upload/tesla2_gfbss2.png",
     achievements: [
-      "Developed advanced simulations and visualizations of AutoCAD 3D models using PyTorch and Plotly libraries.",
-      "Built an object detection algorithm using convolutional neural networks to detect, recognize, and identify entities in the image.",
-      "Improved accuracy of identifying entities in the image significantly by 30%.",
+      "Developed a full-stack dashboard for visualizing Auto-CAD 3D objects models using Pytorch and Plotly.",
+      "Built web tools to streamline internal design visualization and reporting workflows.",
+      "Enhanced interface features and improved rendering speed by 30%.",
     ],
   },
   {
