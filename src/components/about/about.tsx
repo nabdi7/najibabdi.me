@@ -65,7 +65,7 @@ export default function About() {
             </span>
           </p>
         </div>
-        <div className="mb-4 md:mb-0">
+        {/* <div className="mb-4 md:mb-0">
           <Image
             className="rounded-lg grayscale"
             src="/najib.jpg"
@@ -74,7 +74,7 @@ export default function About() {
             height={175}
             priority
           />
-        </div>
+        </div> */}
       </section>
       <Work />
     </>
