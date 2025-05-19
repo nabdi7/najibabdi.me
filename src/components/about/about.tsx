@@ -15,7 +15,7 @@ export default function About() {
               <a
                 href="https://www.gatech.edu"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer" 
                 className="text-blue-500"
               >
                 Georgia Tech University
